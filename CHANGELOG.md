@@ -48,6 +48,12 @@ _None._
 
 _None._
 
+## 3.4.2
+
+### Bug Fixes
+
+- Fix `hash_directory` helper, and make it portable (Mac+Linux) [#95]
+
 ## 3.4.1
 
 ### Bug Fixes
