@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Initialize variables
+reports_dir=""
+output_file=""
+
+# Function to show usage
+usage() {
+    echo "Usage: $0 -d <reports_dir> -o <output_file>"
+    exit 1
+}
+
+# Parse command-line options
+while getopts "d:o:" opt; do
+    case $opt in
+        d) reports_dir=$OPTARG ;;
+        o) output_file=$OPTARG ;;
+        ?) usage ;;
+    esac
+done
+
+# Check if both arguments were provided
+if [ -z "$reports_dir" ] || [ -z "$output_file" ]; then
+    usage
+fi
+
+touch "$output_file"
+{
+  echo '<?xml version="1.0" encoding="UTF-8"?>'
+  # Write XML header to the output file
+  echo '<testsuites>'
+
+  # Merge the content of all input JUnit files in the directory.
+  # Ignore <testsuites> tag in reports that are being merged,
+  # as this tag should be a top-level, root tag for any report
+  sed '/<\?xml .*\?>/d;/<testsuites.*>/d; /<\/testsuites>/d' "$reports_dir"/*.xml
+
+  # Close the testsuites tag
+  echo '</testsuites>'
+} >> "$output_file"
+
+# Print the result
+echo "Merged XML reports into $output_file"
