@@ -32,8 +32,8 @@ ACCELERATION_STATUS=$(aws s3api get-bucket-accelerate-configuration --bucket "$B
 
 if [ "$ACCELERATION_STATUS" = "Enabled" ]; then
 	echo "Downloading with transfer acceleration"
-	aws s3 cp "s3://$BUCKET/$KEY" "$OUTPUT_PATH"  --endpoint-url https://s3-accelerate.amazonaws.com
+	buildkite-agent artifact download "s3://$BUCKET/$KEY" "$OUTPUT_PATH"  --endpoint-url https://s3-accelerate.amazonaws.com
 else
-	aws s3 cp "s3://$BUCKET/$KEY" "$OUTPUT_PATH"
+	buildkite-agent artifact download "s3://$BUCKET/$KEY" "$OUTPUT_PATH"
 fi
 
