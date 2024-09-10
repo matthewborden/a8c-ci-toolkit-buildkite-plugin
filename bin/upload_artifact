@@ -35,5 +35,5 @@ KEY="$BUILDKITE_BUILD_ID/$BASENAME"
 #	echo "Uploading with transfer acceleration"
 #	buildkite-agent artifact upload "$ARTIFACT_PATH" "s3://$BUCKET/$KEY" --endpoint-url https://s3-accelerate.amazonaws.com
 # else
-	buildkite-agent artifact upload "$ARTIFACT_PATH" "s3://$BUCKET/$KEY"
+	buildkite-agent artifact upload "$ARTIFACT_PATH" 
 # fi
