@@ -18,10 +18,10 @@ fi
 
 BUCKET=${ARTIFACTS_S3_BUCKET-}
 
-if [ -z "$BUCKET" ]; then
-	echo "You must pass set the \`ARTIFACTS_S3_BUCKET\` environment variable with the S3 bucket you'd like to use"
-	exit 2
-fi
+# if [ -z "$BUCKET" ]; then
+#	echo "You must pass set the \`ARTIFACTS_S3_BUCKET\` environment variable with the S3 bucket you'd like to use"
+#	exit 2
+# fi
 
 OUTPUT_PATH=${2-.}
 
