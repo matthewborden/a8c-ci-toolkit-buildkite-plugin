@@ -34,6 +34,6 @@ KEY="$BUILDKITE_BUILD_ID/$ARTIFACT_FILE_NAME"
 #	echo "Downloading with transfer acceleration"
 #	buildkite-agent artifact download "s3://$BUCKET/$KEY" "$OUTPUT_PATH"  --endpoint-url https://s3-accelerate.amazonaws.com
 # else
-	buildkite-agent artifact download "$KEY" "$OUTPUT_PATH"
+	buildkite-agent artifact download "$ARTIFACT_FILE_NAME" "$OUTPUT_PATH"
 # fi
 
